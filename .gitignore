@@ -1,0 +1,5 @@
+/public/stylesheets
+/node_modules/
+.ntvs_analysis.dat
+/obj/
+*.suo
