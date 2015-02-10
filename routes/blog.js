@@ -10,7 +10,7 @@ exports.blog = function (req, res) {
         postExtracter.loadBlogPosts()
     }
     var blogPosts = postExtracter.blogPosts().limit(3).order("jsDate desc").get()
-    res.render('blog', { title: 'testCode', blogPosts: blogPosts, env: router.env, isBlogPage: true })
+    res.render('blog', { title: pageTitle, blogPosts: blogPosts, env: router.env, isBlogPage: true })
 }
 
 exports.games = function (req, res) {
