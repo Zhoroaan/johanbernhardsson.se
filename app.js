@@ -9,6 +9,11 @@ var sassMiddleware = require('node-sass-middleware')
 var bourbon = require('node-bourbon');
 var neat = require('node-neat');
 
+var fs = require('fs');
+// removes the style file because that is not done correctly by the middle where
+var filePath = "public/stylesheets/style.css";
+fs.unlinkSync(filePath);
+
 
 var app = express();
 
