@@ -1,0 +1,13 @@
+﻿extends layout
+
+block content
+    section.games
+        each game in games
+            article.game
+                //iframe(width="620" height="349" src=game.youtubeLink frameborder="0" allowfullscreen)
+                .gameTextArea
+                    h1=game.title
+                    != game.content
+                .video
+                    div.youtube(id=game.youtubeLink, style="width: 630px; height: 349px;")
+        script(src="https://labnol.googlecode.com/files/youtube.js")

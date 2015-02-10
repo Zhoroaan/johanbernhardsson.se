@@ -6,12 +6,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var livereload = require('express-livereload');
 var sassMiddleware = require('node-sass-middleware')
+var bourbon = require('node-bourbon');
+var neat = require('node-neat');
 
-var routes = require('./routes/index');
 
 var app = express();
 
-app.set('env', process.env.NODE_ENV || 'production')
+var env = process.env.NODE_ENV || 'production'
+console.log("process.env.NODE_ENV: " + env)
+
+app.set('env', env)
+var routes = require('./routes/blog');
+routes.env = env
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,15 +29,21 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+bourbon.with('sass/stylesheets')
+neat.with('sass/stylesheets')
+
 app.use(sassMiddleware({
     src: __dirname + '/sass',
     dest: __dirname + '/public',
     debug: true,
-    outputStyle: 'nested'
+    outputStyle: 'nested',
+    includePaths: bourbon.includePaths.concat(neat.includePaths)
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.get('/', routes.blog);
+app.get('/games', routes.games);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,7 +68,7 @@ if (app.get('env') === 'development') {
 
 livereload(app, config = {
     watchDir: process.cwd(),
-    exts: ['scss', 'jade', 'css', 'js'],
+    exts: ['scss', 'jade', 'css', 'js', 'md'],
     applyJSLive: false
 })
 

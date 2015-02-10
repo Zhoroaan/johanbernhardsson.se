@@ -20,16 +20,33 @@ NODE_ENV=development</Environment>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="docs\post_info.txt" />
+    <Content Include="markdown\blog\2013-09-22-One_feature_at_a_time.md" />
+    <Content Include="markdown\blog\2014-05-03-Are_we_making_a_game.md" />
+    <Content Include="markdown\blog\2013-07-17-Game developer_2_0.md" />
+    <Content Include="markdown\games\awesome_fighters.md" />
+    <Content Include="markdown\games\decadence.md" />
+    <Content Include="markdown\games\jordlingar.md" />
+    <Content Include="markdown\games\mcpe.md" />
+    <Content Include="markdown\games\nuclear_pizza_war.md" />
     <Content Include="package.json" />
     <Compile Include="app.js" />
-    <Compile Include="routes\index.js" />
+    <Compile Include="PostExtracter.js" />
+    <Compile Include="routes\blog.js" />
     <Content Include="views\error.jade" />
-    <Content Include="views\index.jade" />
+    <Content Include="views\blog.jade" />
+    <Content Include="views\games.jade" />
+    <Content Include="views\google_analytics.jade" />
+    <Content Include="views\header.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="sass\stylesheets\style.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin" />
+    <Folder Include="markdown\" />
+    <Folder Include="markdown\blog\" />
+    <Folder Include="docs\" />
+    <Folder Include="markdown\games\" />
     <Folder Include="sass\" />
     <Folder Include="public" />
     <Folder Include="public\images" />

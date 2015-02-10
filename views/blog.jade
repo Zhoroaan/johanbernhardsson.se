@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  each blogPost in blogPosts
+    article.blog
+      h1=blogPost.title
+      time(dateTime=blogPost.jsDate.toISOString()) !{blogPost.friendlyTime}
+      != blogPost.content
