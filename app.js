@@ -11,8 +11,12 @@ var neat = require('node-neat');
 
 var fs = require('fs');
 // removes the style file because that is not done correctly by the middle where
-var filePath = "public/stylesheets/style.css";
-fs.unlinkSync(filePath);
+try {
+    var filePath = "public/stylesheets/style.css";
+    fs.unlinkSync(filePath);
+} catch (err) {
+    console.log(filePath + " not found")
+}
 
 
 var app = express();
