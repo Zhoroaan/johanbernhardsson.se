@@ -7,7 +7,6 @@ var neat = require('node-neat');
 var ghPages = require('gulp-gh-pages');
 var gutil = require('gulp-util');
 var webserver = require('gulp-webserver')
-var webserver = require('gulp-download')
 var easyimg = require('easyimage');
 
 var postExtracter = require('./PostExtracter.js')
@@ -102,7 +101,7 @@ gulp.task('watch', ['javascript', 'images', 'jade', 'styles'], function() {
 gulp.task('thumnails', function() {
     postExtracter.loadGamePosts()
     var games = postExtracter.games().order("startDate desc").get()
-    
+
 })
 
 gulp.task('connect', ['watch'], function () {
