@@ -9,9 +9,21 @@ var ghPages = require('gulp-gh-pages');
 
 var postExtracter = require('./PostExtracter.js')
 
+var environment = "development"
+
 bourbon.with('sass')
 neat.with('sass')
 compass.with('sass')
+gulp.task('set-production', function() {
+    environment = "production"
+    var fs = require('fs');
+    fs.writeFile("site/CNAME", "johanbernhardsson.se", function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("Wrote CNAME!");
+    }); 
+})
 
 gulp.task('move-images', function() {
     gulp.src(['public/images/**/*'])
@@ -26,7 +38,8 @@ gulp.task('compile-jade', function () {
     var data = {
         data: {
             title: pageTitle,
-            games: games
+            games: games,
+            env: environment
         }
     }
     gulp.src('./views/index.jade')
@@ -49,32 +62,20 @@ gulp.task('styles', function() {
     .pipe(livereload())
 })
 
-gulp.task('default', function () {
+gulp.task('default', ['move-images', 'compile-jade', 'styles'], function () {
     livereload.listen();
-    gulp.run('move-images')
-    gulp.run('compile-jade')
-    gulp.run('styles')
 
-    gulp.watch("public/images/**/*", function (event) {
-        gulp.run('move-images');
-        gulp.run('styles');
-    })
-    gulp.watch(["views/**/*.jade", "markdown/**/*.*"], function (event) {
-        gulp.run('compile-jade');
-    })
+    gulp.watch("public/images/**/*", ['move-images', 'styles'])
 
-    gulp.watch("sass/**/*.scss", function (event) {
-        gulp.run('styles');
-    })
+    gulp.watch(["views/**/*.jade", "markdown/**/*.*"], ['compile-jade'])
+
+    gulp.watch("sass/**/*.scss", ['styles'])
 })
 
-gulp.task('deploy', function() {
-    gulp.run('move-images')
-    gulp.run('compile-jade')
-    gulp.run('styles')
+gulp.task('deploy', ['set-production', 'move-images', 'compile-jade', 'styles'], function() {
     var githubOptions = {
         remoteUrl: "git@github.com:Zhoroaan/zhoroaan.github.io.git",
         branch: "master"
     }
-    return gulp.src('./site/**/*').pipe(ghPages());
+    return gulp.src('./site/**/*').pipe(ghPages(githubOptions));
 });

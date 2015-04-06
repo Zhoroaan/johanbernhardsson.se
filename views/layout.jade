@@ -3,8 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='style/mobile.css')
-    link(rel='stylesheet', href='style/desktop.css' media="(min-width:54em)")
-    script(src="http://localhost:35729/livereload.js")
+    link(rel='stylesheet', href='style/desktop.css' media="(min-width:70em)")
+    if(env === "development")
+        script(src="http://localhost:35729/livereload.js")
     != LRScript
     include ./google_analytics.jade
   body
@@ -15,6 +16,6 @@ html
             .box
                 p Copyright &copy; 2015 Johan Bernhardsson
             .box
-                a(href="http://twitter.com/jbernhardsson").twitter-button.social.selected Follow me on twitter
+                a(href="https://twitter.com/jbernhardsson").twitter-button.social.selected Follow me on twitter
             .box
-                a(href="http://linkedin.com/in/jbernhardsson").linkedin-button.social.selected View my profile on LinkedIn
+                a(href="https://linkedin.com/in/jbernhardsson").linkedin-button.social.selected View my profile on LinkedIn
