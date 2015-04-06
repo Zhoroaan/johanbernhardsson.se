@@ -6,6 +6,7 @@ var bourbon = require('node-bourbon');
 var neat = require('node-neat');
 var livereload = require('gulp-livereload');
 var ghPages = require('gulp-gh-pages');
+var gutil = require('gulp-util');
 
 var postExtracter = require('./PostExtracter.js')
 
@@ -19,9 +20,9 @@ gulp.task('set-production', function() {
     var fs = require('fs');
     fs.writeFile("site/CNAME", "johanbernhardsson.se", function(err) {
         if(err) {
-            return console.log(err);
+            return gutil.log(err);
         }
-        console.log("Wrote CNAME!");
+        gutil.log("Wrote CNAME");
     }); 
 })
 
