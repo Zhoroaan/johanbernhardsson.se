@@ -4,17 +4,39 @@ var gsass = require('gulp-sass')
 var compass = require('node-libcompass');
 var bourbon = require('node-bourbon');
 var neat = require('node-neat');
-var livereload = require('gulp-livereload');
 var ghPages = require('gulp-gh-pages');
 var gutil = require('gulp-util');
+var webserver = require('gulp-webserver')
+var webserver = require('gulp-download')
+var easyimg = require('easyimage');
 
 var postExtracter = require('./PostExtracter.js')
 
 var environment = "development"
 
+
+var taskFilePaths = {
+    javascript: {
+        src: ['javascript/**/*']
+    },
+    images: {
+        src: ['images/**/*']
+    },
+    jade: {
+        src: ["./views/index.jade"],
+        watch: ["views/**/*.jade", "markdown/**/*.*"]
+    },
+    styles: {
+        src: ["./sass/*.scss"],
+        watch: ["sass/**/*.scss"]
+    }
+}
+
 bourbon.with('sass')
 neat.with('sass')
 compass.with('sass')
+
+
 gulp.task('set-production', function() {
     environment = "production"
     var fs = require('fs');
@@ -26,13 +48,17 @@ gulp.task('set-production', function() {
     }); 
 })
 
-gulp.task('move-images', function() {
-    gulp.src(['public/images/**/*'])
-        .pipe(gulp.dest('site/images'))
-        .pipe(livereload())
+gulp.task('javascript', function() {
+    gulp.src(taskFilePaths.javascript.src)
+        .pipe(gulp.dest('site/js'))
 })
 
-gulp.task('compile-jade', function () {
+gulp.task('images', function() {
+    gulp.src(taskFilePaths.images.src)
+        .pipe(gulp.dest('site/images'))
+})
+
+gulp.task('jade', function () {
     postExtracter.loadGamePosts()
     var pageTitle = "Johan Bernhardsson - Game development"
     var games = postExtracter.games().order("startDate desc").get()
@@ -43,10 +69,9 @@ gulp.task('compile-jade', function () {
             env: environment
         }
     }
-    gulp.src('./views/index.jade')
+    gulp.src(taskFilePaths.jade.src)
     .pipe(gjade(data))
     .pipe(gulp.dest('site'))
-    .pipe(livereload())
 })
 
 gulp.task('styles', function() {
@@ -57,23 +82,42 @@ gulp.task('styles', function() {
         outputStyle: 'nested',
         includePaths: bourbon.includePaths.concat(neat.includePaths).concat(compass.includePaths)
     }
-    return gulp.src('sass/*.scss')
+    return gulp.src(taskFilePaths.styles.src)
     .pipe(gsass(sassSettings))
     .pipe(gulp.dest('site/style'))
-    .pipe(livereload())
 })
 
-gulp.task('default', ['move-images', 'compile-jade', 'styles'], function () {
-    livereload.listen();
+gulp.task('watch', ['javascript', 'images', 'jade', 'styles'], function() {
+    for (var task in taskFilePaths) {
+        var dirsToWatch = taskFilePaths[task].src
 
-    gulp.watch("public/images/**/*", ['move-images', 'styles'])
-
-    gulp.watch(["views/**/*.jade", "markdown/**/*.*"], ['compile-jade'])
-
-    gulp.watch("sass/**/*.scss", ['styles'])
+        if(taskFilePaths[task].watch) {
+            dirsToWatch = dirsToWatch.concat(taskFilePaths[task].watch)
+        }
+        gutil.log("[Add watch for " + task + "]", dirsToWatch);
+        gulp.watch(dirsToWatch, [task])
+    }
 })
 
-gulp.task('deploy', ['set-production', 'move-images', 'compile-jade', 'styles'], function() {
+gulp.task('thumnails', function() {
+    postExtracter.loadGamePosts()
+    var games = postExtracter.games().order("startDate desc").get()
+    
+})
+
+gulp.task('connect', ['watch'], function () {
+  return gulp.src('site')
+      .pipe(webserver({
+        root: 'site',
+        livereload: true,
+        open: true
+      }))
+})
+
+gulp.task('default', ['connect'], function () {
+})
+
+gulp.task('deploy', ['set-production', 'javascript', 'images', 'jade', 'styles'], function() {
     var githubOptions = {
         remoteUrl: "git@github.com:Zhoroaan/zhoroaan.github.io.git",
         branch: "master"

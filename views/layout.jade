@@ -6,6 +6,10 @@ html
     link(rel='stylesheet', href='style/desktop.css' media="(min-width:70em)")
     if(env === "development")
         script(src="http://localhost:35729/livereload.js")
+    script(src="js/vendor/jquery-1.11.2.min.js")
+    script(src="js/vendor/jquery.waitforimages.min.js")
+    script(src="js/vendor/jquery.fitvids.js")
+    script(src="js/vendor/jquery.prettyembed.min.js")
     != LRScript
     include ./google_analytics.jade
   body

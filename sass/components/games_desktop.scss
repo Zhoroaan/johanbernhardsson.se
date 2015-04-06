@@ -29,12 +29,6 @@ article.game {
 
     .game-wrapper {
         @include span-columns-reactive(7, 12);
-        height: $article_game_height;
-
-        iframe, .youtube {
-            @include size(100%);
-            height: $article_game_height;
-        }
     }
 }
 

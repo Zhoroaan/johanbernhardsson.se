@@ -8,5 +8,7 @@ block content
                     h1=game.title
                     != game.content
                 .game-wrapper
-                    .youtube(id=game.youtubeLink)
-    script(src="https://labnol.googlecode.com/files/youtube.js")
+                    .pretty-embed(data-pe-videoid=game.youtubeLink data-pe-fitvids="true")
+                    //.youtube(id=game.youtubeLink)
+    script(type='text/javascript').
+        $().prettyEmbed({ useFitVids: true, previewSize: "high" });
