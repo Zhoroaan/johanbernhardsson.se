@@ -8,6 +8,7 @@ block content
                 .gameTextArea
                     h1=game.title
                     != game.content
-                .video
-                    div.youtube(id=game.youtubeLink, style="width: 630px; height: 349px;")
-        script(src="https://labnol.googlecode.com/files/youtube.js")
+                .game-wrapper
+                    //iframe(src="http://www.youtube.com/embed/" + game.youtubeLink + "?showinfo=0&iv_load_policy=3&controls=0" frameborder="0" allowfullscreen)
+                    .youtube(id=game.youtubeLink)
+    script(src="https://labnol.googlecode.com/files/youtube.js")

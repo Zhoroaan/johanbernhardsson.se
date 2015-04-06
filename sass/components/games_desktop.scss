@@ -1,0 +1,47 @@
+@import "bourbon";
+@import "neat";
+/* GAMES! :D */
+section.games {
+    margin-top: 2.5em;
+    margin-bottom: 5em;
+}
+$article_game_height: 350px;
+article.game {
+    min-height: $article_game_height;
+    background-color: $background-color-dark;
+    margin-bottom: 2em;
+    @include outer-container;
+    width: 100%;
+    h1 {
+        text-align: center;
+        font-size: 3em;
+        margin-top: 0.1em;
+    }
+    p {
+        font-size: 1.2em;
+        display: block;
+    }
+    .gameTextArea {
+        @include span-columns-reactive(5, 12);
+        @include pad();
+        height: $article_game_height;
+    }
+
+    .game-wrapper {
+        @include span-columns-reactive(7, 12);
+        height: $article_game_height;
+
+        iframe, .youtube {
+            @include size(100%);
+            height: $article_game_height;
+        }
+    }
+}
+
+article.game:nth-child(even) .gameTextArea {
+    float: left;
+}
+
+article.game:nth-child(odd) .gameTextArea{
+    float: right;
+}

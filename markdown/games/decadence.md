@@ -1,5 +1,5 @@
 ﻿---
-title: Decadence
+title: Decadence Mod
 startDate: 2007-07-18 09:00
 youtubeId: T6c3OPOXr0k
 ---

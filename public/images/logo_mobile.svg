@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="700" height="72" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<style type="text/css" >
+      <![CDATA[
+      	text {
+      		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      	}
+        .name {
+			font-size: 20em;
+	        fill: #eee;
+        }
+      ]]>
+    </style>
+	<text x="20" y="58" class="name"> Johan Bernhardsson </text>
+</svg>

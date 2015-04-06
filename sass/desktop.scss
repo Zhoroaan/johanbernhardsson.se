@@ -1,0 +1,13 @@
+@import "bourbon";
+@import "neat";
+
+@mixin span-columns-reactive($columnsDesktop, $columnsMobile) {
+     @include span-columns($columnsDesktop)
+}
+body {
+    padding-top: 1em;
+}
+@import "./components/common";
+@import "./components/header_desktop";
+@import "./components/footer_desktop";
+@import "./components/games_desktop";

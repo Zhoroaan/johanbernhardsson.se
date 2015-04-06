@@ -1,0 +1,28 @@
+@import "bourbon";
+@import "neat";
+footer {
+    margin-top: 10px;
+    border-top: 2px solid #161516;
+    padding-top: 20px;
+    @include outer-container;
+
+    .box {
+        height: 8em;
+        white-space: nowrap;
+        @include span-columns(4);
+        display:block;
+        text-align: center;
+        p {
+            margin-top: 0;
+        }
+    }
+    .box:first-child {
+        text-align: left;
+    }
+    .box:last-child {
+        text-align: right;
+        * {
+            float: right;
+        }
+    }
+}

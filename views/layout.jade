@@ -2,7 +2,9 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='style/mobile.css')
+    link(rel='stylesheet', href='style/desktop.css' media="(min-width:54em)")
+    script(src="http://localhost:35729/livereload.js")
     != LRScript
     include ./google_analytics.jade
   body
@@ -10,8 +12,9 @@ html
         include ./header.jade
         block content
         footer
-            p Copyright &copy; 2015 Johan Bernhardsson
-            .center
+            .box
+                p Copyright &copy; 2015 Johan Bernhardsson
+            .box
                 a(href="http://twitter.com/jbernhardsson").twitter-button.social.selected Follow me on twitter
-            .right
+            .box
                 a(href="http://linkedin.com/in/jbernhardsson").linkedin-button.social.selected View my profile on LinkedIn

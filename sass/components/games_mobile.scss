@@ -1,0 +1,32 @@
+@import "bourbon";
+@import "neat";
+/* GAMES! :D */
+section.games {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+$article_game_height: 350px;
+article.game {
+    background-color: $background-color-dark;
+    margin-bottom: 1.5em;
+    @include outer-container;
+    width: 100%;
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        padding-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    p {
+        display: none;
+    }
+
+    .game-wrapper {
+        height: $article_game_height;
+
+        iframe, .youtube {
+            @include size(100%);
+            height: $article_game_height;
+        }
+    }
+}

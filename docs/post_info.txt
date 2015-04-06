@@ -1,7 +1,0 @@
-﻿Inital idea:
-- Use taffydb as database where we extract all of the posts and games from disc (http://www.taffydb.com)
-- Read the data with marky-mark (https://www.npmjs.com/package/marky-mark)
-http://momentjs.com/docs/
-- Pass in the items we want to render into jade and get the website
-Note: Do not read the jade files directly from jade
-Note 2: Do not keep the data in the marky-mark format, make our own for each type

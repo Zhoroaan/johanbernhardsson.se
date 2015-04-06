@@ -1,0 +1,24 @@
+@import "bourbon";
+@import "neat";
+
+/* SOCIAL :D */
+a.social {
+	font-size: 10px;
+	margin: 0 10px 0 10px;
+}
+
+.twitter-button {
+	padding-left: 24px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: url('../images/twitter.png');
+	background-repeat: no-repeat;
+}
+
+.linkedin-button {
+	padding-left: 24px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: url('../images/linkedin.png');
+	background-repeat: no-repeat;
+}

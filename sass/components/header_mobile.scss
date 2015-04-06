@@ -1,0 +1,16 @@
+@import "bourbon";
+@import "neat";
+header {
+    background-color: $background-color-dark;
+    height: 3em;
+
+    background-image: url("../images/logo_mobile.svg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+
+    aside {
+        float: right;
+        margin-right: 25px;
+        margin-top: 10px;
+    }
+}

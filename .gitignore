@@ -3,3 +3,5 @@
 .ntvs_analysis.dat
 /obj/
 *.suo
+/.publish/
+/site/

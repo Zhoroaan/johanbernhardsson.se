@@ -1,5 +1,5 @@
 ﻿---
-title: Minecraft PE
+title: Minecraft Pocket Edition
 startDate: 2012-07-18 09:00
 youtubeId: x4MEDYEx5fU
 ---

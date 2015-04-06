@@ -1,0 +1,16 @@
+@import "bourbon";
+@import "neat";
+footer {
+    border-top: 2px solid #161516;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .box {
+        height: 2em;
+        white-space: nowrap;
+        display:block;
+        text-align: center;
+        p {
+            margin-top: 0;
+        }
+    }
+}

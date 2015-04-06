@@ -6,18 +6,24 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var livereload = require('express-livereload');
 var sassMiddleware = require('node-sass-middleware')
+var compass = require('node-libcompass');
 var bourbon = require('node-bourbon');
 var neat = require('node-neat');
 
 var fs = require('fs');
-// removes the style file because that is not done correctly by the middle where
-try {
-    var filePath = "public/stylesheets/style.css";
-    fs.unlinkSync(filePath);
-} catch (err) {
-    console.log(filePath + " not found")
+
+var removeFile = function(path) {
+    try {
+        fs.unlinkSync(path);
+    } catch (err) {
+        console.log(path + " not found")
+    }
 }
 
+// removes the style file because that is not done correctly by the middle where
+
+removeFile("public/stylesheets/mobile.css")
+removeFile("public/stylesheets/desktop.css")
 
 var app = express();
 
@@ -41,18 +47,18 @@ app.use(cookieParser());
 
 bourbon.with('sass/stylesheets')
 neat.with('sass/stylesheets')
+compass.with('sass/stylesheets')
 
 app.use(sassMiddleware({
     src: __dirname + '/sass',
     dest: __dirname + '/public',
     debug: true,
     outputStyle: 'nested',
-    includePaths: bourbon.includePaths.concat(neat.includePaths)
+    includePaths: bourbon.includePaths.concat(neat.includePaths).concat(compass.includePaths)
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', routes.blog);
-app.get('/games', routes.games);
+app.get('/', routes.games);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,37 @@
+@import "bourbon";
+@import "neat";
+
+@import "social";
+
+$background-color: #353535;
+$background-color-dark: black;
+$background-color-front: #353535;
+$font-color: #cecece;
+$font-color-dark: #666666;
+
+$font-sanserif: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+$font-serif: $georgia;
+
+body {
+  font: 14px $font-sanserif;
+  color: $font-color;
+  background-color: $background-color;
+  margin: 0;
+  background-image: url("../images/background.gif");
+  @include outer-container;
+}
+
+h1, h2, h3 {
+    font-family: $font-serif;
+    font-weight: normal;
+}
+
+a {
+	color: #737373;
+	text-decoration: none;
+}
+a:hover{
+	text-shadow:0 0 12px #ffffff;
+	color: #CCCCCC;
+	/*text-decoration: underline;*/
+}
