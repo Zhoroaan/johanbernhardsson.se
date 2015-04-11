@@ -8,7 +8,6 @@ block content
                     h1=game.title
                     != game.content
                 .game-wrapper
-                    .pretty-embed(data-pe-videoid=game.youtubeLink data-pe-fitvids="true")
-                    //.youtube(id=game.youtubeLink)
+                    .pretty-embed(data-pe-videoid=game.youtubeLink data-pe-fitvids="true" data-pe-custom-preview-image="images/thumbs/" + game.youtubeLink + ".jpg")
     script(type='text/javascript').
-        $().prettyEmbed({ useFitVids: true, previewSize: "high" });
+        $().prettyEmbed()

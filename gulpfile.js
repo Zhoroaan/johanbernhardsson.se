@@ -7,7 +7,7 @@ var neat = require('node-neat');
 var ghPages = require('gulp-gh-pages');
 var gutil = require('gulp-util');
 var webserver = require('gulp-webserver')
-var easyimg = require('easyimage');
+var youtubeThumnail = require('./gulp-youtube-thumbnail.js')
 
 var postExtracter = require('./PostExtracter.js')
 
@@ -48,12 +48,12 @@ gulp.task('set-production', function() {
 })
 
 gulp.task('javascript', function() {
-    gulp.src(taskFilePaths.javascript.src)
+    return gulp.src(taskFilePaths.javascript.src)
         .pipe(gulp.dest('site/js'))
 })
 
 gulp.task('images', function() {
-    gulp.src(taskFilePaths.images.src)
+    return gulp.src(taskFilePaths.images.src)
         .pipe(gulp.dest('site/images'))
 })
 
@@ -68,7 +68,7 @@ gulp.task('jade', function () {
             env: environment
         }
     }
-    gulp.src(taskFilePaths.jade.src)
+    return gulp.src(taskFilePaths.jade.src)
     .pipe(gjade(data))
     .pipe(gulp.dest('site'))
 })
@@ -86,7 +86,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('site/style'))
 })
 
-gulp.task('watch', ['javascript', 'images', 'jade', 'styles'], function() {
+gulp.task('watch', ['javascript', 'images', 'thumnails', 'jade', 'styles'], function() {
     for (var task in taskFilePaths) {
         var dirsToWatch = taskFilePaths[task].src
 
@@ -101,7 +101,12 @@ gulp.task('watch', ['javascript', 'images', 'jade', 'styles'], function() {
 gulp.task('thumnails', function() {
     postExtracter.loadGamePosts()
     var games = postExtracter.games().order("startDate desc").get()
-
+    var youtubeIds = []
+    for(var game in games) {
+        youtubeIds.push(games[game].youtubeLink)
+    }
+    return youtubeThumnail(youtubeIds)
+        .pipe(gulp.dest('site/images/thumbs'))
 })
 
 gulp.task('connect', ['watch'], function () {
@@ -109,14 +114,16 @@ gulp.task('connect', ['watch'], function () {
       .pipe(webserver({
         root: 'site',
         livereload: true,
-        open: true
+        open: true,
+        port: 4343,
+        host: "0.0.0.0"
       }))
 })
 
 gulp.task('default', ['connect'], function () {
 })
 
-gulp.task('deploy', ['set-production', 'javascript', 'images', 'jade', 'styles'], function() {
+gulp.task('deploy', ['set-production', 'javascript', 'images', 'jade', 'thumnails', 'styles'], function() {
     var githubOptions = {
         remoteUrl: "git@github.com:Zhoroaan/zhoroaan.github.io.git",
         branch: "master"
