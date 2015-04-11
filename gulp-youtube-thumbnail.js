@@ -1,8 +1,7 @@
 var through = require("through"),
 	gutil = require("gulp-util"),
 	request = require("request"),
-	progress = require("request-progress"),
-	col = gutil.colors;
+	progress = require("request-progress");
 
 module.exports = function(youtubeids){
 	var stream = through(function(file,enc,cb){
