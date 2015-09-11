@@ -9,11 +9,11 @@
       		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
       	}
         .name {
-			font-size: 60em;
+			    font-size: 60px;
 	        fill: white;
         }
         .occupation {
-			font-size: 16em;
+			font-size: 16px;
 			color: #777;
 			fill: #777;
 		}

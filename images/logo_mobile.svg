@@ -9,10 +9,10 @@
       		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
       	}
         .name {
-			font-size: 20em;
+			font-size: 40px;
 	        fill: #eee;
         }
       ]]>
     </style>
-	<text x="20" y="58" class="name"> Johan Bernhardsson </text>
+	<text x="20" y="62" class="name"> Johan Bernhardsson </text>
 </svg>
