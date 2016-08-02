@@ -4,13 +4,15 @@
 @import "social";
 
 $background-color: #353535;
-$background-color-dark: black;
+$background-color-dark: #101010;
 $background-color-front: #353535;
-$font-color: #cecece;
+$font-color: #eeeeee;
 $font-color-dark: #666666;
 
 $font-sanserif: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 $font-serif: $georgia;
+
+$article_game_height: 351px;
 
 body {
   font: 1em $font-sanserif;
@@ -27,12 +29,12 @@ h1, h2, h3 {
 }
 
 a {
-	color: #737373;
+	color: #9254de;
 	text-decoration: none;
 }
 a:hover{
-	text-shadow:0 0 12px #ffffff;
-	color: #CCCCCC;
+	text-shadow:0 0 10px #a65efe;
+  color: #a65efe;
 	/*text-decoration: underline;*/
 }
 .pretty-embed {

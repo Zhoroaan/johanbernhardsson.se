@@ -1,0 +1,16 @@
+﻿extends layout
+
+block content
+    section.games
+        each game in games
+            article.game
+                .gameTextArea
+                    h1=game.title
+                    != game.content
+                .game-wrapper
+                    if('youtubeLink' in game)
+                        .pretty-embed(data-pe-videoid=game.youtubeLink data-pe-fitvids="true" data-pe-custom-preview-image="images/thumbs/" + game.youtubeLink + ".jpg")
+                    else
+                        img(src="images/" + game.imageLink)
+    script(type='text/javascript').
+        $().prettyEmbed()

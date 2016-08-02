@@ -2,15 +2,16 @@
 @import "neat";
 header {
     background-color: $background-color-dark;
-    height: 3em;
+    height: 6em;
 
     background-image: url("../images/logo_mobile.svg");
     background-repeat: no-repeat;
-    background-position: left bottom;
+    background-position: center;
 
     aside {
-        float: right;
-        margin-right: 25px;
-        margin-top: 10px;
+        padding-top: 4em;
+        float: none;
+        margin:auto;
+        width:200px;
     }
 }

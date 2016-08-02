@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg width="700" height="72" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="95" version="1.1" xmlns="http://www.w3.org/2000/svg">
 	<style type="text/css" >
       <![CDATA[
       	text {
@@ -13,12 +13,12 @@
 	        fill: white;
         }
         .occupation {
-			font-size: 16px;
-			color: #777;
-			fill: #777;
-		}
+					font-size: 35px;
+					color: #777;
+					fill: #777;
+				}
       ]]>
     </style>
-	<text x="20" y="58" class="name"> Johan Bernhardsson </text>
-	<text x="450" y="20" class="occupation"> Game Developer </text>
+	<text x="450" y="45" class="name" text-anchor="middle"> Johan Bernhardsson </text>
+	<text x="450" y="85" class="occupation" text-anchor="middle"> Game Developer </text>
 </svg>

@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg width="700" height="72" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="42" version="1.1" xmlns="http://www.w3.org/2000/svg">
 	<style type="text/css" >
       <![CDATA[
       	text {
@@ -14,5 +14,5 @@
         }
       ]]>
     </style>
-	<text x="20" y="62" class="name"> Johan Bernhardsson </text>
+	<text x="20" y="32" class="name"> Johan Bernhardsson </text>
 </svg>

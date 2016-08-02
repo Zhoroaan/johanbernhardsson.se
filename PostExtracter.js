@@ -16,9 +16,13 @@ exports.loadGamePosts = function () {
         var formatedPost = {}
         formatedPost.title = entry.meta.title
         formatedPost.startDate = moment(entry.meta.startDate)
-        formatedPost.youtubeLink = entry.meta.youtubeId /*"http://www.youtube.com/embed/" 
+        if("youtubeId" in entry.meta) {
+            formatedPost.youtubeLink = entry.meta.youtubeId /*"http://www.youtube.com/embed/" 
                                     + entry.meta.youtubeId 
                                     + "?rel=0&vq=hd720&showinfo=0"*/
+        } else {
+            formatedPost.imageLink = entry.meta.imageLink
+        }
         formatedPost.content = entry.content
         exports.games.insert(formatedPost)
     });

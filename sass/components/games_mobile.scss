@@ -10,13 +10,26 @@ article.game {
     margin-bottom: 1.5em;
     @include outer-container;
     width: 100%;
+    display: table;
     h1 {
         text-align: center;
         font-size: 2em;
-        padding-top: 0.5em;
         margin-bottom: 0.5em;
+        text-align: center;
     }
     p {
-        display: none;
+        text-align: center;
+        font-size: 1.2em;
+        padding: 0 10px 0 10px;
+    }
+
+    img {
+        width:100%;
+        height: 100%;
+    }
+
+    .game-wrapper {
+        margin-bottom: -5px;
+        display: table-header-group;
     }
 }

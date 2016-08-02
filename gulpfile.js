@@ -1,5 +1,5 @@
 ﻿var gulp = require('gulp');
-var gjade = require('gulp-jade');
+var gjade = require('gulp-pug');
 var gsass = require('gulp-sass')
 var compass = require('node-libcompass');
 var bourbon = require('node-bourbon');
@@ -22,8 +22,8 @@ var taskFilePaths = {
         src: ['images/**/*']
     },
     jade: {
-        src: ["./views/index.jade"],
-        watch: ["views/**/*.jade", "markdown/**/*.*"]
+        src: ["./views/index.pug"],
+        watch: ["views/**/*.pug", "markdown/**/*.*"]
     },
     styles: {
         src: ["./sass/*.scss"],
@@ -58,6 +58,7 @@ gulp.task('images', function() {
 })
 
 gulp.task('jade', function () {
+    gutil.log("Running jade");
     postExtracter.loadGamePosts()
     var pageTitle = "Johan Bernhardsson - Game development"
     var games = postExtracter.games().order("startDate desc").get()
@@ -103,7 +104,9 @@ gulp.task('thumnails', function() {
     var games = postExtracter.games().order("startDate desc").get()
     var youtubeIds = []
     for(var game in games) {
-        youtubeIds.push(games[game].youtubeLink)
+        if('youtubeLink' in games[game]) {
+            youtubeIds.push(games[game].youtubeLink)
+        }
     }
     return youtubeThumnail(youtubeIds)
         .pipe(gulp.dest('site/images/thumbs'))
@@ -116,7 +119,7 @@ gulp.task('connect', ['watch'], function () {
         livereload: true,
         open: true,
         port: 4343,
-        host: "0.0.0.0"
+        host: "127.0.0.1"
       }))
 })
 
