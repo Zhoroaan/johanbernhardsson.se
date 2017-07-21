@@ -6,17 +6,18 @@
 $background-color: #353535;
 $background-color-dark: #101010;
 $background-color-front: #353535;
-$font-color: #eeeeee;
+$font-color: #ddd;
 $font-color-dark: #666666;
 
-$font-sanserif: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-$font-serif: $georgia;
+$font-header: 'Oswald', sans-serif;
+$font-body: 'Raleway', sans-serif;
 
 $article_game_height: 351px;
 
 body {
-  font: 1em $font-sanserif;
+  font: 1em $font-body;
   color: $font-color;
+  font-weight: medium;
   background-color: $background-color;
   margin: 0;
   background-image: url("../images/background.gif");
@@ -24,7 +25,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: $font-serif;
+    font-family: $font-header;
     font-weight: normal;
 }
 
