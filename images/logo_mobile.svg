@@ -6,7 +6,8 @@
 	<style type="text/css" >
       <![CDATA[
       	text {
-      		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      		font-family: 'Oswald', sans-serif;
+					font-weight: medium;
       	}
         .name {
 			font-size: 40px;
