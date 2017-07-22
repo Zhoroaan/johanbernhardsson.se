@@ -6,19 +6,20 @@
 	<style type="text/css" >
       <![CDATA[
       	text {
-      		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      		font-family: 'Oswald', sans-serif;
+					font-weight: medium;
       	}
         .name {
 			    font-size: 60px;
 	        fill: white;
         }
         .occupation {
-					font-size: 35px;
+					font-size: 22px;
 					color: #777;
 					fill: #777;
 				}
       ]]>
     </style>
 	<text x="450" y="45" class="name" text-anchor="middle"> Johan Bernhardsson </text>
-	<text x="450" y="85" class="occupation" text-anchor="middle"> Game Developer </text>
+	<text x="450" y="78" class="occupation" text-anchor="middle"> Creative Director @ Midnight Hub </text>
 </svg>
